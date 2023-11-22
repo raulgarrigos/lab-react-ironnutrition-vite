@@ -1,15 +1,15 @@
-function FoodBox(props) {
+function FoodBox({ eachProduct: { name, calories, image, servings } }) {
   return (
     <div>
-      <p>{props.food.name}</p>
+      <p>{name}</p>
 
-      <img src={props.food.image} />
+      <img src={image} width={100} />
 
-      <p>Calories: {props.food.calories}</p>
-      <p>Servings {props.food.servings}</p>
+      <p>Calories: {calories}</p>
+      <p>Servings {servings}</p>
 
       <p>
-        <b>Total Calories: {props.food.servings * props.food.calories} </b> kcal
+        <b>Total Calories: {servings * calories} </b> kcal
       </p>
 
       <button>Delete</button>
