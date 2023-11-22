@@ -1,16 +1,16 @@
 function FoodBox(props) {
-  const { name, calories, image, servings } = props.eachProduct;
+  const { id, name, calories, image, servings } = props.eachProduct;
 
   const handleDelete = (indexToDelete) => {
     console.log("Probando eliminar producto", indexToDelete);
 
-    const clone = JSON.parse(JSON.stringify(props.showFood));
+    const clone = JSON.parse(JSON.stringify(props.food));
     clone.splice(indexToDelete, 1);
-    props.setShowFood(clone);
+    props.setFood(clone);
   };
 
   return (
-    <div key={props.index}>
+    <div key={id}>
       <p>{name}</p>
 
       <img src={image} width={100} />
