@@ -6,17 +6,23 @@ import FoodBox from "./components/FoodBox";
 function App() {
   const [showFood, setShowFood] = useState(foodsJson);
 
+  const [deleteProduct, setProductDelete] = useState(showFood);
+
   return (
     <div className="App">
       <h1>LAB | React IronNutrition</h1>
 
-      {foodsJson.map((eachProduct, index) => {
+      {showFood.map((eachProduct, index) => {
         return (
-          <FoodBox food={showFood} key={index} eachProduct={eachProduct} />
+          <FoodBox
+            key={eachProduct.id}
+            showFood={showFood}
+            setShowFood={setShowFood}
+            eachProduct={eachProduct}
+            index={index}
+          />
         );
       })}
-
-      {/* <FoodBox food={showFood} /> */}
     </div>
   );
 }
