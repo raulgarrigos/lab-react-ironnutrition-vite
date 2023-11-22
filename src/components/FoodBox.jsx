@@ -1,3 +1,5 @@
+import { Card, Col, Button } from "antd";
+
 function FoodBox(props) {
   const { id, name, calories, image, servings } = props.eachProduct;
 
@@ -10,20 +12,35 @@ function FoodBox(props) {
   };
 
   return (
-    <div key={id}>
-      <p>{name}</p>
+    <Col>
+      <Card title={name} style={{ width: 230, height: 300, margin: 10 }}>
+        <img src={image} height={60} alt="food" />
+        <p>Calories: {calories}</p>
+        <p>Servings {servings}</p>
+        <p>
+          <b>Total Calories: {servings * calories}</b> kcal
+        </p>
+        <Button type="primary" onClick={() => handleDelete(props.index)}>
+          {" "}
+          Delete{" "}
+        </Button>
+      </Card>
+    </Col>
 
-      <img src={image} width={100} />
+    // <div key={id}>
+    //   <p>{name}</p>
 
-      <p>Calories: {calories}</p>
-      <p>Servings {servings}</p>
+    //   <img src={image} width={100} />
 
-      <p>
-        <b>Total Calories: {servings * calories} </b> kcal
-      </p>
+    //   <p>Calories: {calories}</p>
+    //   <p>Servings {servings}</p>
 
-      <button onClick={() => handleDelete(props.index)}>Delete</button>
-    </div>
+    //   <p>
+    //     <b>Total Calories: {servings * calories} </b> kcal
+    //   </p>
+
+    //   <button onClick={() => handleDelete(props.index)}>Delete</button>
+    // </div>
   );
 }
 

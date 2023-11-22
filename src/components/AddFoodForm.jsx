@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { Divider, Input, Button } from "antd";
+
 function AddFoodForm(props) {
   const [nameValue, setNameValue] = useState("");
   const [imageValue, setImageValue] = useState("");
@@ -21,6 +23,7 @@ function AddFoodForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("Creando producto");
 
     const newProduct = {
       name: nameValue,
@@ -30,7 +33,7 @@ function AddFoodForm(props) {
     };
 
     const clone = JSON.parse(JSON.stringify(props.food));
-    clone.push(newProduct);
+    clone.unshift(newProduct);
     props.setFood(clone);
     props.setFoodToDisplay(clone);
 
@@ -42,40 +45,78 @@ function AddFoodForm(props) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="name">Name </label>
-      <input
-        type="text"
+      <Divider>Add Food Entry</Divider>
+
+      <label>Name</label>
+      <Input
         name="name"
-        onChange={handleNameChange}
         value={nameValue}
-      />
-      <br />
-      <label htmlFor="image">Image </label>
-      <input
         type="text"
+        onChange={handleNameChange}
+      />
+
+      <label>Image</label>
+      <Input
         name="image"
-        onChange={handleImageChange}
         value={imageValue}
+        type="text"
+        onChange={handleImageChange}
       />
-      <br />
-      <label htmlFor="calories">Calories </label>
-      <input
-        type="number"
+
+      <label>Calories</label>
+      <Input
         name="calories"
-        onChange={handleCaloriesChange}
         value={caloriesValue}
-      />
-      <br />
-      <label htmlFor="servings">Servings </label>
-      <input
         type="number"
-        name="servings"
-        onChange={handleServingsChange}
-        value={servingsValue}
+        onChange={handleCaloriesChange}
       />
-      <br />
-      <button type="submit">Create</button>
+
+      <label>Servings</label>
+      <Input
+        name="servings"
+        value={servingsValue}
+        type="number"
+        onChange={handleServingsChange}
+      />
+
+      <Button htmlType="submit">Create</Button>
     </form>
+
+    // <form onSubmit={handleSubmit}>
+    //   <label htmlFor="name">Name </label>
+    //   <input
+    //     type="text"
+    //     name="name"
+    //     onChange={handleNameChange}
+    //     value={nameValue}
+    //   />
+    //   <br />
+    //   <label htmlFor="image">Image </label>
+    //   <input
+    //     type="text"
+    //     name="image"
+    //     onChange={handleImageChange}
+    //     value={imageValue}
+    //   />
+    //   <br />
+    //   <label htmlFor="calories">Calories </label>
+    //   <input
+    //     type="number"
+    //     name="calories"
+    //     onChange={handleCaloriesChange}
+    //     value={caloriesValue}
+    //   />
+    //   <br />
+    //   <label htmlFor="servings">Servings </label>
+    //   <input
+    //     type="number"
+    //     name="servings"
+    //     onChange={handleServingsChange}
+    //     value={servingsValue}
+    //   />
+    //   <br />
+    //   <button type="submit">Create</button>
+    // </form>
   );
 }
 
